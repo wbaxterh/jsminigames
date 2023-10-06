@@ -161,6 +161,12 @@ const SnakeGame = () => {
 					></canvas>
 				</div>
 				<div className="col-sm-7">
+					<h5>Let's Play Snake!</h5>
+					<p>No hitting the walls, no touching yourself.</p>
+				</div>
+			</div>
+			<div className="row">
+				<div className="col">
 					<CodeTabs />
 				</div>
 			</div>
