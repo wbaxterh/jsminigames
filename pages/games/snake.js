@@ -47,7 +47,7 @@ export default function Snake() {
 			<Header />
 			<div className={styles.container}>
 				<main>
-					<h1 className={styles.title}>Welcome to the Snake Game!</h1>
+					<h1 className={styles.title}>Welcome to the Snake Game.</h1>
 
 					<div className={styles.grid}>
 						<SnakeGame />

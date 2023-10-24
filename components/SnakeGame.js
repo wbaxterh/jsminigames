@@ -11,16 +11,34 @@ const SnakeGame = () => {
 	const [food, setFood] = useState({ x: 50, y: 50 });
 	const [showModal, setShowModal] = useState(false);
 	const [lastKey, setLastKey] = useState();
+	const [gameOver, setGameOver] = useState(false);
+	const [count, setCount] = useState(0);
 	const resetGame = () => {
 		setShowModal(false);
+		setGameOver(false);
+		setCount(0);
 		setSnake([{ x: 10, y: 10 }]);
 		setDx(10);
 		setDy(0);
 		setFood({ x: 50, y: 50 });
+		const canvas = document.getElementById("gameCanvas");
+		const ctx = canvas.getContext("2d");
+		ctx.fillStyle = "green";
+		ctx.fillRect(10, 10, 10, 10); // Initial snake part
+		ctx.fillStyle = "red";
+		ctx.fillRect(50, 50, 10, 10); // Initial food
+	};
+
+	const clearCanvas = () => {
+		const canvas = document.getElementById("gameCanvas");
+		const ctx = canvas.getContext("2d");
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
 	};
 
 	const handleGameOver = () => {
+		setGameOver(true); // Set game over state to true
 		setShowModal(true);
+		clearCanvas();
 	};
 
 	useEffect(() => {
@@ -41,7 +59,7 @@ const SnakeGame = () => {
 		};
 
 		const gameLoop = () => {
-			if (isPaused || !gameStarted) return; // Modified condition
+			if (isPaused || !gameStarted || gameOver) return; // Modified condition
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 			drawFood();
 			drawSnake();
@@ -63,6 +81,7 @@ const SnakeGame = () => {
 					y: Math.floor(Math.random() * 30) * 10,
 				};
 				setFood(newFood);
+				setCount(count + 1);
 				newSnake.push(snake[snake.length - 1]);
 			}
 
@@ -137,36 +156,38 @@ const SnakeGame = () => {
 		}
 	};
 	const closeAndReset = () => {
+		clearCanvas();
 		resetGame();
 		setIsPaused(true);
 		setGameStarted(false);
 	};
 
 	return (
-		<div className="container">
-			<div className="row mb-2">
-				<div className="col"></div>
+		<div className='container'>
+			<div className='row mb-2'>
+				<div className='col'></div>
 			</div>
-			<div className="row mb-2">
-				<div className="col-sm-5">
-					<Button variant="primary" className="mb-2" onClick={handlePlayPause}>
+			<div className='row mb-2'>
+				<div className='col-sm-5'>
+					<Button variant='primary' className='mb-2' onClick={handlePlayPause}>
 						{isPaused ? "Start Game!" : "Pause"}
 					</Button>
 					<br />
 					<canvas
-						id="gameCanvas"
-						width="300"
-						height="300"
-						className="border"
+						id='gameCanvas'
+						width='300'
+						height='300'
+						className='border'
 					></canvas>
 				</div>
-				<div className="col-sm-7">
+				<div className='col-sm-7'>
 					<h5>Let's Play Snake!</h5>
 					<p>No hitting the walls, no touching yourself.</p>
+					<p>Score: {count}</p>
 				</div>
 			</div>
-			<div className="row">
-				<div className="col">
+			<div className='row'>
+				<div className='col'>
 					<CodeTabs />
 				</div>
 			</div>
@@ -176,10 +197,10 @@ const SnakeGame = () => {
 				</Modal.Header>
 				<Modal.Body>Would you like to play again?</Modal.Body>
 				<Modal.Footer>
-					<Button variant="secondary" onClick={closeAndReset}>
+					<Button variant='secondary' onClick={closeAndReset}>
 						No
 					</Button>
-					<Button variant="primary" onClick={resetGame}>
+					<Button variant='primary' onClick={resetGame}>
 						Yes
 					</Button>
 				</Modal.Footer>
