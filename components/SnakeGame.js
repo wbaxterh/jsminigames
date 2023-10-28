@@ -13,6 +13,8 @@ const SnakeGame = () => {
 	const [lastKey, setLastKey] = useState();
 	const [gameOver, setGameOver] = useState(false);
 	const [count, setCount] = useState(0);
+	const [highScore, setHighScore] = useState(0);
+
 	const resetGame = () => {
 		setShowModal(false);
 		setGameOver(false);
@@ -38,12 +40,21 @@ const SnakeGame = () => {
 	const handleGameOver = () => {
 		setGameOver(true); // Set game over state to true
 		setShowModal(true);
+		if (count > highScore) {
+			setHighScore(count);
+			localStorage.setItem("snakeGameHighScore", count);
+		}
 		clearCanvas();
 	};
 
 	useEffect(() => {
 		const canvas = document.getElementById("gameCanvas");
 		const ctx = canvas.getContext("2d");
+
+		const savedHighScore = localStorage.getItem("snakeGameHighScore");
+		if (savedHighScore) {
+			setHighScore(parseInt(savedHighScore, 10));
+		}
 
 		const drawSnakePart = (snakePart, index) => {
 			ctx.fillStyle = index === 0 ? "lightgreen" : "green";
@@ -184,6 +195,7 @@ const SnakeGame = () => {
 					<h5>Let's Play Snake!</h5>
 					<p>No hitting the walls, no touching yourself.</p>
 					<p>Score: {count}</p>
+					<p>Highest Score: {highScore} </p>
 				</div>
 			</div>
 			<div className='row'>
