@@ -1,21 +1,18 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 
 export default function Home() {
 	return (
 		<>
 			<Head>
 				<title>Javascript Mini Games</title>
-				<link rel="icon" href="/favicon.ico" />
+				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<Header />
 			<div className={styles.container}>
 				<main>
 					<h1 className={styles.title}>About Us</h1>
 					<div className={`${styles.grid} text-left justify-content-left`}>
-						<h3 className="text-left">Our mission </h3>
+						<h3 className='text-left'>Our mission </h3>
 						<p>
 							Is to make games in Javascript, React, or other frameworks- that
 							not only work well, but are actually fun to play. We want to use
@@ -25,8 +22,6 @@ export default function Home() {
 						</p>
 					</div>
 				</main>
-
-				<Footer />
 			</div>
 		</>
 	);

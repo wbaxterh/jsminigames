@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Header from "../components/Header";
+import Header from "../components/CustomHeader";
 import Footer from "../components/Footer";
 
 export default function Home() {
@@ -8,13 +8,12 @@ export default function Home() {
 		<>
 			<Head>
 				<title>Javascript Mini Games</title>
-				<link rel="icon" href="/favicon.ico" />
+				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<Header />
 			<div className={styles.container}>
 				<main>
 					<h1 className={styles.title}>
-						Welcome to <a href="/games">Javascript Mini Games!</a>
+						Welcome to <a href='/games'>Javascript Mini Games!</a>
 					</h1>
 
 					<p className={styles.description}>
@@ -22,7 +21,7 @@ export default function Home() {
 					</p>
 
 					<div className={styles.grid}>
-						<a href="#" className={styles.card}>
+						<a href='#' className={styles.card}>
 							<h3>Documentation &rarr;</h3>
 							<p>
 								Find in-depth information about Javascript Mini Games and the
@@ -30,7 +29,7 @@ export default function Home() {
 							</p>
 						</a>
 
-						<a href="games" className={styles.card}>
+						<a href='games' className={styles.card}>
 							<h3>Play & Learn &rarr;</h3>
 							<p>
 								Learn about javascript in an interactive gaming course with
@@ -38,7 +37,7 @@ export default function Home() {
 							</p>
 						</a>
 
-						<a href="#" className={styles.card}>
+						<a href='#' className={styles.card}>
 							<h3>Examples &rarr;</h3>
 							<p>
 								Discover and deploy boilerplate example javascript gaming
@@ -46,7 +45,7 @@ export default function Home() {
 							</p>
 						</a>
 
-						<a href="#" className={styles.card}>
+						<a href='#' className={styles.card}>
 							<h3>Questions? &rarr;</h3>
 							<p>
 								We are here to help answer any and all questions you can throw
@@ -55,8 +54,6 @@ export default function Home() {
 						</a>
 					</div>
 				</main>
-
-				<Footer />
 			</div>
 		</>
 	);

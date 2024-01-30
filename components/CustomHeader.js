@@ -10,24 +10,28 @@ import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS here
 
 const Header = () => {
 	return (
-		<Navbar bg="light" expand="lg">
+		<Navbar bg='dark' expand='lg'>
 			<Container>
-				<Navbar.Brand href="/">
+				<Navbar.Brand href='/'>
 					<Image
 						className={styles.icon}
-						src="/jsMiniGames.png" // Route of the image file
+						src='/logo-1-crop.png' // Route of the image file
 						style={{ margin: "0 auto", textAlign: "center" }}
-						height={55} // Desired size with correct aspect ratio
-						width={55} // Desired size with correct aspect ratio
-						alt="JS Mini Games"
+						height={80} // Desired size with correct aspect ratio
+						width={80} // Desired size with correct aspect ratio
+						alt='JS Mini Games'
 					/>
 				</Navbar.Brand>
-				<Navbar.Toggle aria-controls="basic-navbar-nav" />
-				<Navbar.Collapse id="basic-navbar-nav">
-					<Nav className="me-auto">
-						<Nav.Link href="/">Home</Nav.Link>
-						<NavDropdown title="Games" id="basic-nav-dropdown">
-							<NavDropdown.Item href="games/snake">Snake</NavDropdown.Item>
+				<Navbar.Toggle aria-controls='basic-navbar-nav' />
+				<Navbar.Collapse id='basic-navbar-nav'>
+					<Nav className='me-auto text-light'>
+						<Nav.Link href='/'>Home</Nav.Link>
+						<NavDropdown
+							title='Games'
+							id='basic-nav-dropdown'
+							className='text-light'
+						>
+							<NavDropdown.Item href='games/snake'>Snake</NavDropdown.Item>
 							{/* <NavDropdown.Item href="#action/3.2">
 								Another action
 							</NavDropdown.Item>
@@ -37,19 +41,19 @@ const Header = () => {
 								Separated link
 							</NavDropdown.Item> */}
 						</NavDropdown>
-						<Nav.Link href="blog">Blog</Nav.Link>
-						<Nav.Link href="about">About</Nav.Link>
+						<Nav.Link href='blog'>Blog</Nav.Link>
+						<Nav.Link href='about'>About</Nav.Link>
 					</Nav>
 					<Nav className={`ms-auto`}>
 						<Nav.Link
 							className={`btn btn-primary ${styles.login}`}
-							href="login"
+							href='login'
 						>
 							Log In
 						</Nav.Link>
 						<Nav.Link
 							className={`btn btn-secondary ${styles.login}`}
-							href="signup"
+							href='signup'
 						>
 							Sign Up
 						</Nav.Link>

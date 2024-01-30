@@ -180,10 +180,6 @@ const SnakeGame = () => {
 			</div>
 			<div className='row mb-2'>
 				<div className='col-sm-5'>
-					<Button variant='primary' className='mb-2' onClick={handlePlayPause}>
-						{isPaused ? "Start Game!" : "Pause"}
-					</Button>
-					<br />
 					<canvas
 						id='gameCanvas'
 						width='300'
@@ -192,16 +188,27 @@ const SnakeGame = () => {
 					></canvas>
 				</div>
 				<div className='col-sm-7'>
-					<h5>Let's Play Snake!</h5>
-					<p>No hitting the walls, no touching yourself.</p>
-					<p>Score: {count}</p>
-					<p>Highest Score: {highScore} </p>
+					<div className='row d-flex align-items-center'>
+						<div className='col-sm'>
+							<Button
+								variant='primary'
+								className='mb-2'
+								onClick={handlePlayPause}
+							>
+								{isPaused ? "Start Game!" : "Pause"}
+							</Button>
+							<p>Score: {count}</p>
+							<p>Highest Score: {highScore} </p>
+						</div>
+						<div className='col-sm'>
+							<h5>Let's Play Snake!</h5>
+							<p>No hitting the walls, no touching yourself.</p>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div className='row'>
-				<div className='col'>
-					<CodeTabs />
-				</div>
+				<div className='col'>{/* <CodeTabs /> */}</div>
 			</div>
 			<Modal show={showModal} onHide={closeAndReset}>
 				<Modal.Header closeButton>
